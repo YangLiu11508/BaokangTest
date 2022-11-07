@@ -19,6 +19,7 @@ class FindNewsType(unittest.TestCase):
         response = requests.request("GET", url,).json()
 
         code = response.get('code')
+        print('response=' + str(response))
         self.assertEqual(200, code)
 
 

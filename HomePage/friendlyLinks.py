@@ -1,22 +1,22 @@
-# 首页视频
+# 友情链接
 import unittest
 import requests
 from config import setting
 
-url = setting.BASE_URL + '/member-reversion/videoInfo/getVideo'
+url = setting.BASE_URL + '/member/county/friendlyLinks'
 
 
-class GetVideo(unittest.TestCase):
+class FriendlyLinks(unittest.TestCase):
 
     def setUp(self) -> None:
-        print('GetVideo开始执行...')
+        print('friendlyLinks开始执行...')
 
     def tearDown(self) -> None:
-        print('GetVideo结束执行...')
+        print('friendlyLinks结束执行...')
 
-    def test01_getVideo(self):
+    def test01_friendlyLinks(self):
         '''
-        首页获取视频
+        获取友情链接
         :return:
         '''
         response = requests.request("GET", url).json()

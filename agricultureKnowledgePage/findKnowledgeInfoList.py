@@ -1,126 +1,103 @@
-# 首页 新闻列表列表,保康县概况
 import unittest
 import requests
 from config import setting
 
-url = setting.BASE_URL + '/member/county/findNewsInformationList?'
+url = setting.BASE_URL + '/member/county/findKnowledgeInfoList?'
 
 
-class FindNewsInformationList(unittest.TestCase):
+class FindKnowledgeInfoList(unittest.TestCase):
 
     def setUp(self) -> None:
-        print('FindNewsInformationList开始执行...')
+        print('FindKnowledgeInfoList 开始执行...')
 
     def tearDown(self) -> None:
-        print('FindNewsInformationList结束执行...')
+        print('FindKnowledgeInfoList 结束执行...')
 
-    def test01_agriculture_news(self):
+    def test01_findKnowledgeInfoList(self):
         '''
-        农业要闻列表
+        农技知识页，获取知识大全列表（所有分类）
         :return:
         '''
-        params = {'pageSize': 5,
-                  'pageNum': 1,
-                  'type': 2}
+        params = {'pageSize': 6,
+                  'pageNum': 1}
         response = requests.request("GET", url, params=params).json()
         code = response.get('code')
         print('response=' + str(response))
         self.assertEqual(200, code)
 
-    def test02_bk_introduction(self):
+    def test02_science(self):
         '''
-        保康县概况
-        :return:
-        '''
-        params = {'type': 5}
-        response = requests.request("GET", url, params=params).json()
-        code = response.get('code')
-        print('response=' + str(response))
-        self.assertEqual(200, code)
-
-    def test03(self):
-        '''
-        新闻资讯-通知公告列表
+        农技知识页，获取科普类列表
         :return:
         '''
         params = {'pageSize': 6,
                   'pageNum': 1,
-                  'type': 1,
-                  'status': 1}
+                  'docType': '040101'}
         response = requests.request("GET", url, params=params).json()
         code = response.get('code')
         print('response=' + str(response))
         self.assertEqual(200, code)
 
-    def test04(self):
+    def test03_thesis(self):
         '''
-        新闻资讯-新闻热点，资讯中心列表（所有分类）
+        农技知识页，获取论文列表
         :return:
         '''
-        params = {'pageSize': 14,
+        params = {'pageSize': 6,
                   'pageNum': 1,
-                  'type': 2,
-                  'status': 1}
+                  'docType': '040102'}
         response = requests.request("GET", url, params=params).json()
         code = response.get('code')
         print('response=' + str(response))
         self.assertEqual(200, code)
 
-    def test05(self):
+    def test04_patent(self):
         '''
-        新闻资讯-乡村动态
+        农技知识页，获取专利列表
         :return:
         '''
-        params = {'pageSize': 14,
+        params = {'pageSize': 6,
                   'pageNum': 1,
-                  'type': 2,
-                  'status': 1,
-                  'newsType': 1}
+                  'docType': '040104'}
         response = requests.request("GET", url, params=params).json()
         code = response.get('code')
         print('response=' + str(response))
         self.assertEqual(200, code)
 
-    def test06(self):
+    def test05_standard(self):
         '''
-        新闻资讯-农业动态
+        农技知识页，获取标准列表
         :return:
         '''
-        params = {'pageSize': 14,
+        params = {'pageSize': 6,
                   'pageNum': 1,
-                  'type': 2,
-                  'status': 1,
-                  'newsType': 2}
+                  'docType': '040105'}
         response = requests.request("GET", url, params=params).json()
         code = response.get('code')
         print('response=' + str(response))
         self.assertEqual(200, code)
 
-    def test07(self):
+    def test06_achievement(self):
         '''
-        新闻资讯-政策专题
+        农技知识页，获取成果列表
         :return:
         '''
-        params = {'pageSize': 14,
+        params = {'pageSize': 6,
                   'pageNum': 1,
-                  'type': 2,
-                  'status': 1,
-                  'newsType': 3}
+                  'docType': '040106'}
         response = requests.request("GET", url, params=params).json()
         code = response.get('code')
         print('response=' + str(response))
         self.assertEqual(200, code)
 
-    def test08(self):
+    def test07_experience(self):
         '''
-        新闻资讯-通知公告搜索
+        农技知识页，获取经验列表
         :return:
         '''
-        params = {'pageSize': 8,
+        params = {'pageSize': 6,
                   'pageNum': 1,
-                  'type': 1,
-                  'status': 1,
-                  'title': '测试'}
+                  'docType': '040107'}
         response = requests.request("GET", url, params=params).json()
         code = response.get('code')
         print('response=' + str(response))
